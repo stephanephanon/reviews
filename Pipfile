@@ -5,6 +5,7 @@ verify_ssl = true
 
 [dev-packages]
 coverage = "*"
+factory-boy = "*"
 
 [packages]
 djangorestframework = "==3.9.3"

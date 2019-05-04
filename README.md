@@ -1,5 +1,14 @@
 # reviews
-Django application for submitting company reviews
+Django application for submitting company reviews via an API.
+
+Supports the following:
+
+1. Users can register for the system via the API
+2. Users can get an authentication token via the API.
+2. Authenticated users can write reviews
+3. Authenticated users can read their own reviews.
+4. Django Admin users can manage all Companies, Reviews, and Reviewers
+
 
 ## Prerequisites
 
