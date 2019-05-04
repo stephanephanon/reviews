@@ -26,6 +26,7 @@ class Reviewer(models.Model):
         return self.user.username
 
 
+# TODO: capture IP address on save
 class Review(models.Model):
     """
     Represents a user review about a company
