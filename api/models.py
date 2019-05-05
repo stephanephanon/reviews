@@ -10,7 +10,7 @@ class Company(models.Model):
     name = models.CharField(max_length=64)
     website = models.URLField(null=True, blank=True)
 
-    def __str__(self):
+    def __str__(self):  # pragma: no cover
         return self.name
 
 
@@ -22,11 +22,10 @@ class Reviewer(models.Model):
     bio = models.TextField(blank=True)
     website = models.URLField(null=True, blank=True)
 
-    def __str__(self):
+    def __str__(self):  # pragma: no cover
         return self.user.username
 
 
-# TODO: capture IP address on save
 class Review(models.Model):
     """
     Represents a user review about a company
@@ -40,5 +39,5 @@ class Review(models.Model):
     company = models.ForeignKey(Company, on_delete=models.PROTECT)
     reviewer = models.ForeignKey(Reviewer, on_delete=models.CASCADE)
 
-    def __str__(self):
+    def __str__(self):  # pragma: no cover
         return self.title

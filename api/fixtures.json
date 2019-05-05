@@ -1,0 +1,164 @@
+[
+  {
+    "model": "auth.user",
+    "pk": 18,
+    "fields": {
+      "password": "pbkdf2_sha256$150000$6teEgI2k5Wd2$7vUrVcopN20uBR60Jp2VwofXVBzU6u4BtOJmSiQ0WbE=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "bsmith",
+      "first_name": "Bob",
+      "last_name": "Smith",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2019-05-05T20:26:48Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 19,
+    "fields": {
+      "password": "pbkdf2_sha256$150000$ZiUmuwBvfKM8$j1QoBMtnw98ysRZhDYBNmTmNEIoUXjGHOZfH4UU1m/c=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "jtaylor",
+      "first_name": "Judy",
+      "last_name": "Taylor",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2019-05-05T20:27:11Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 20,
+    "fields": {
+      "password": "pbkdf2_sha256$150000$Iy8yPHIVr0dx$74DChsgYnoXfIhUpOjFno1viPYwZrqubxJeiYq8fYB0=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "jdoe",
+      "first_name": "John",
+      "last_name": "Doe",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2019-05-05T20:27:28Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "api.company",
+    "pk": 17,
+    "fields": {
+      "name": "Charlie's Steak House",
+      "website": "http://www.charlies-steak.com"
+    }
+  },
+  {
+    "model": "api.company",
+    "pk": 18,
+    "fields": {
+      "name": "Bill's Bar and Grill",
+      "website": "http://billsgrill.com"
+    }
+  },
+  {
+    "model": "api.reviewer",
+    "pk": 16,
+    "fields": {
+      "user": 18,
+      "bio": "I like to eat",
+      "website": null
+    }
+  },
+  {
+    "model": "api.reviewer",
+    "pk": 17,
+    "fields": {
+      "user": 20,
+      "bio": "",
+      "website": null
+    }
+  },
+  {
+    "model": "api.reviewer",
+    "pk": 18,
+    "fields": {
+      "user": 19,
+      "bio": "Ready to write reviews!",
+      "website": "http://www.judy.com"
+    }
+  },
+  {
+    "model": "api.review",
+    "pk": 6,
+    "fields": {
+      "rating": 5,
+      "title": "The best steak!",
+      "summary": "They had the best steak",
+      "ip_address": "22.192.46.29",
+      "submission_date": "2019-05-05T20:30:24.910Z",
+      "company": 17,
+      "reviewer": 16
+    }
+  },
+  {
+    "model": "api.review",
+    "pk": 7,
+    "fields": {
+      "rating": 3,
+      "title": "It was ok",
+      "summary": "I've had better. It was expensive!",
+      "ip_address": "22.53.4.129",
+      "submission_date": "2019-05-05T20:30:47.767Z",
+      "company": 17,
+      "reviewer": 18
+    }
+  },
+  {
+    "model": "api.review",
+    "pk": 8,
+    "fields": {
+      "rating": 4,
+      "title": "Great for sports",
+      "summary": "It's a sports bar. Bill is there.",
+      "ip_address": "22.192.46.29",
+      "submission_date": "2019-05-05T20:31:16.127Z",
+      "company": 18,
+      "reviewer": 16
+    }
+  },
+  {
+    "model": "api.review",
+    "pk": 9,
+    "fields": {
+      "rating": 2,
+      "title": "Didn't like it",
+      "summary": "2 stars for the cold beer.",
+      "ip_address": "67.66.165.38",
+      "submission_date": "2019-05-05T20:31:43.553Z",
+      "company": 18,
+      "reviewer": 17
+    }
+  },
+  {
+    "model": "api.review",
+    "pk": 10,
+    "fields": {
+      "rating": 5,
+      "title": "Perfect for Happy Hour!",
+      "summary": "I think it's great",
+      "ip_address": "90.149.175.132",
+      "submission_date": "2019-05-05T20:32:09.041Z",
+      "company": 18,
+      "reviewer": 18
+    }
+  }
+]

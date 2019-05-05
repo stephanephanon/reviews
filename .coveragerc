@@ -1,0 +1,30 @@
+# run coverage as "coverage run manage.py test"
+# .coveragerc to control coverage.py
+[run]
+branch = True
+
+# run coverage on the full project (the current directory from which we run coverage)
+source =
+	.
+
+# we don't want to run coverage on these files.
+omit =
+    .venv/*
+	manage.py
+	api/migrations/*
+    api/apps.py
+    reviews/wsgi.py
+    reviews/settings.py
+    api/tests/factories.py
+
+# coverage report settings
+[report]
+exclude_lines =
+	pragma: no cover
+
+ignore_errors = True
+
+# coverage html settings
+[html]
+directory = htmlcov
+

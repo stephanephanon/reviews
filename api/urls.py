@@ -8,7 +8,7 @@ urlpatterns = [
     path('token-auth/', views.AuthenticateUserView.as_view(), name='reviewer-auth'),
 
     path('companies/', views.CompanyListView.as_view(), name='company-list'),
-    path('companies/<int:pk>', views.CompanyDetailView.as_view(), name='company-detail'),
+    path('companies/<int:pk>/', views.CompanyDetailView.as_view(), name='company-detail'),
 
     path('reviews/', views.ReviewListView.as_view(), name='review-list'),
     path('reviews/<int:pk>/', views.ReviewDetailView.as_view(), name='review-detail'),

@@ -23,8 +23,9 @@ class ReviewSerializer(serializers.HyperlinkedModelSerializer):
         read_only=True
     )
 
-    reviewer = serializers.PrimaryKeyRelatedField(
-        read_only=True
+    reviewer = serializers.HyperlinkedRelatedField(
+        read_only=True,
+        view_name='reviewer-detail'
     )
 
     def _get_ip_address_from_request(self):
@@ -48,15 +49,16 @@ class ReviewSerializer(serializers.HyperlinkedModelSerializer):
         :return: User object
         :raise: ValidationError if AnonymousUser
         """
-        error_msg_anonymous = {'reviewer': "AnonymousUser is not a valid value"}
-        error_msg_no_reviewer = {'reviewer': "Did not find a valid reviewer for this review"}
+        error_msg_anonymous = {'reviewer': "AnonymousUser is not a valid reviewer"}
+        error_msg_no_reviewer = {'reviewer': "Did not find a valid reviewer for this user"}
         user = self.context['request'].user
 
         if user.is_anonymous:
             raise serializers.ValidationError(error_msg_anonymous)
 
-        reviewer = user.reviewer
-        if not reviewer:
+        try:
+            reviewer = user.reviewer
+        except Reviewer.DoesNotExist:
             raise serializers.ValidationError(error_msg_no_reviewer)
 
         return reviewer
@@ -67,7 +69,7 @@ class ReviewSerializer(serializers.HyperlinkedModelSerializer):
         They are read-only for the client.
 
         :param data: data dictionary
-        :return: data
+        :return: dictionary
         :raise: ValidationError
         """
         ret = super().to_internal_value(data)
@@ -110,7 +112,7 @@ class ReviewerSerializer(serializers.HyperlinkedModelSerializer):
         :return:
         """
         reviewer_data = validated_data.pop('reviewer', {})
-        password = validated_data.pop('password')
+        password = validated_data.pop('password', '')
 
         instance = super().create(validated_data)
         if password:
@@ -130,7 +132,7 @@ class ReviewerSerializer(serializers.HyperlinkedModelSerializer):
         :return:
         """
         reviewer_data = validated_data.pop('reviewer', {})
-        password = validated_data.pop('password')
+        password = validated_data.pop('password', '')
 
         instance = super().update(instance, validated_data)
 
@@ -139,7 +141,7 @@ class ReviewerSerializer(serializers.HyperlinkedModelSerializer):
             instance.save()
 
         if reviewer_data:
-            reviewer = Reviewer.objects.get(user=instance)
+            reviewer = instance.reviewer
             for attr, value in reviewer_data.items():
                 setattr(reviewer, attr, value)
             reviewer.save()

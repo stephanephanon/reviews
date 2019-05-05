@@ -22,17 +22,30 @@ class UserFactory(factory.django.DjangoModelFactory):
     password = factory.PostGenerationMethodCall('set_password', 'pw')
     email = ''
 
+    reviewer = factory.RelatedFactory(
+        'api.tests.factories.ReviewerFactory', 'user')
+
 
 class CompanyFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = Company
 
 
+class ReviewerFactory(factory.django.DjangoModelFactory):
+    class Meta:
+        model = Reviewer
+        django_get_or_create = ('user',)
+
+    user = factory.SubFactory(UserFactory, reviewer=None)
+
+
 class ReviewFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = Review
 
-
-class ReviewerFactory(factory.django.DjangoModelFactory):
-    class Meta:
-        model = Reviewer
+    rating = 5
+    title = factory.Sequence(lambda n: "title_%d" % n)
+    summary = factory.Sequence(lambda n: "summary_%d" % n)
+    ip_address = '127.0.0.1'
+    company = factory.SubFactory(CompanyFactory)
+    reviewer = factory.SubFactory(ReviewerFactory)
