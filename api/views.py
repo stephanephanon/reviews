@@ -12,9 +12,11 @@ class AuthenticateUserView(ObtainAuthToken):
     """
     Endpoint to get the token for a reviewer.
 
-    GET: not supported.
+    get:
+    not supported
 
-    POST: send payload as follows to get a token
+    post:
+    send payload as follows to get an authentication token
         {"username": username,
          "password": password
         }
@@ -31,10 +33,13 @@ class AuthenticateUserView(ObtainAuthToken):
 class ReviewerListView(generics.CreateAPIView):
     """
     List endpoint to allow a reviewer to register with the system.
+    Access is open to all users.
 
-    GET: not supported
+    get:
+    not supported
 
-    POST: allowed by anyone to register with the system
+    post:
+    create a new reviewer
     """
     queryset = User.objects.all()
     serializer_class = ReviewerSerializer
@@ -45,11 +50,16 @@ class ReviewerListView(generics.CreateAPIView):
 
 class ReviewerDetailView(generics.RetrieveUpdateAPIView):
     """
-    Detail endpoint to allow a reviewer to manage their information.
+    Detail endpoint to allow a reviewer to manage their own information.
 
-    GET: return information about the current user
+    get:
+    return details about the given user if the user is the request user
 
-    PUT/PATCH: update the current user
+    put:
+    update the given user if the user is the request user
+
+    patch:
+    update the given user if the user is the request user
     """
     queryset = User.objects.all()
     serializer_class = ReviewerSerializer
@@ -58,9 +68,11 @@ class ReviewerDetailView(generics.RetrieveUpdateAPIView):
 
 class CompanyListView(generics.ListAPIView):
     """
-    Read-only list endpoint for companies
+    Read-only endpoint for companies.
 
-    GET: list of companies
+    get:
+    return a list of all companies
+
     """
     queryset = Company.objects.all()
     serializer_class = CompanySerializer
@@ -68,9 +80,10 @@ class CompanyListView(generics.ListAPIView):
 
 class CompanyDetailView(generics.RetrieveAPIView):
     """
-    Read-only detail endpoint of companies
+    Read-only detail endpoint of companies.
 
-    GET: return a single company
+    get:
+    return a details about the given company
     """
     queryset = Company.objects.all()
     serializer_class = CompanySerializer
@@ -78,11 +91,13 @@ class CompanyDetailView(generics.RetrieveAPIView):
 
 class ReviewListView(generics.ListCreateAPIView):
     """
-    List endpoint to allow a reviewer to view and create their reviews
+    List endpoint to allow a reviewer to view and create their reviews.
 
-    GET: list all reviews by this user
+    get:
+    return a list of all reviews by this request user
 
-    POST: create a new review by this user
+    post:
+    create a new review by this request user
     """
     queryset = Review.objects.all()
     serializer_class = ReviewSerializer
@@ -91,13 +106,19 @@ class ReviewListView(generics.ListCreateAPIView):
 
 class ReviewDetailView(generics.RetrieveUpdateDestroyAPIView):
     """
-    Detail endpoint to allow a reviewer to view and edit their reviews
+    Detail endpoint to allow a reviewer to view and edit their reviews.
 
-    GET: return a specific review by this user
+    get:
+    return the given review by this request user
 
-    PUT/PATCH: update a specific review by this user
+    put:
+    update the given review by this request user
 
-    DELETE: delete a specific review by a user
+    patch:
+    update the given review by this request user
+
+    delete:
+    delete the given review by this request user
     """
     queryset = Review.objects.all()
     serializer_class = ReviewSerializer

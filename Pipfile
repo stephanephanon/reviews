@@ -11,6 +11,7 @@ factory-boy = "*"
 djangorestframework = "==3.9.3"
 coverage = "*"
 django = "==2.2.1"
+coreapi = "*"
 
 [requires]
 python_version = "3.6"

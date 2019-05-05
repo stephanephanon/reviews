@@ -1,7 +1,9 @@
 # reviews
 Django application for submitting company reviews via an API.
 
-Supports the following:
+Documentation is available under .../docs
+
+Supports the following under .../api
 
 1. Users can register for the system via the API.
 2. Users can get an authentication token via the API.
