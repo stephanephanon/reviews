@@ -37,7 +37,7 @@ See .env_sample, config directory, and settings.py for example settings.
 * python manage.py createsuperuser
 
 ## Add sample companies, reviewers, and reviews 
-* fixtures.json has sample companies, reviewers, and reviews
+* fixtures/fake_data.json has sample companies, reviewers, and reviews
 * fixture user passwords are all F9aSEvbSfkeYByKG
 
 ## Run application
